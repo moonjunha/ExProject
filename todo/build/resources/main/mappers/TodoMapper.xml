@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.multicampus.todo.dao.TodoDAO">
+
+    <select id="getTime" resultType="String">
+        select now()
+    </select>
+
+    <select id="selectAll" resultType="com.multicampus.todo.domain.TodoVO">
+        select * from tbl_todo
+    </select>
+
+    <select id="selectOne" resultType="com.multicampus.todo.domain.TodoVO">
+         select * from tbl_todo where tno = #{tno}
+    </select>
+
+    <insert id="insert" parameterType="com.multicampus.todo.domain.TodoVO">
+        insert into tbl_todo (title, dueDate, writer) values ( #{title}, #{dueDate}, #{writer})
+    </insert>
+
+    <delete id="delete">
+        delete from tbl_todo where tno = #{tno}
+    </delete>
+
+</mapper>
